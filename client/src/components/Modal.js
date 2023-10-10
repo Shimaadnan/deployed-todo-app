@@ -1,28 +1,33 @@
 import React from 'react'
 import { useState } from 'react';
 
-export default function Modal({mode, setShowModal,task}) {
+export default function Modal({mode, setShowModal,task,getData}) {
   
   const editMode=mode==='edit' ?true:false
   const[data,setData]=useState({
-    user_email:editMode ? task.user_email:'dani@test.com',
+    user_email:editMode ? task.user_email:'shima@test.com',
     title:editMode ? task.title:null,
-    progress:editMode ? task.progress: 50,
+    progress:editMode ? task.progress: 10,
     date:   editMode ? '':new Date()
 
 
   })
 const postData= async(e)=>{
-  e.preventdefault()
+  e.preventDefault()
   try{
-   const responce=await fetch('http://localhost:8000/todos',{
+   const response=await fetch('http://localhost:8000/todos',{
       method:"POST",
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(data)
     })
-    console.log(responce);
+    if(response.status===200){
+      console.log('working')
+      setShowModal(false)
+      getData();
+    }
   }
-  catch(err){console.error(err);}
+  catch(err)
+   {console.error(err);}
 }
 
 
@@ -55,8 +60,8 @@ const postData= async(e)=>{
           <input required type='range'
           min='0'
           max='100'
-          name='proress'
-          id='range'
+          name='progress'
+          id='range'  
           value={data.progress}
           onChange={handleChange}/>
           <input className={mode}type='submit' onClick={editMode ? '':postData}/>

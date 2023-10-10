@@ -19,8 +19,8 @@ const App=()=> {
    const soretdTasks=tasks?.sort((a,b)=> new Date(a.date)-new Date(b.date))
   return (
     <div className="app">
-     < ListHeader listName={'Holiday tick List'}/>
-     {soretdTasks?.map(task=><ListItem key={task.id} task={task}/>)}
+     < ListHeader listName={'Holiday tick List'} getData={getData}/>
+     {soretdTasks?.map(task=><ListItem key={task.id} task={task} getData={getData}/>)}
     </div>
   );
   
