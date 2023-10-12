@@ -62,7 +62,7 @@ app.put('/todos/:id',async(req,res)=>{
 app.delete('todos/:id',async(req,res)=>{
     const {id}=req.params
     try{
-        const deleteTodo=await pool.query('DELETE FROM todos WHERE id=$1',[id])
+        const deleteTodo=await pool.query('DELETE FROM todos WHERE id=$1;',[id])
         res.json(deleteTodo)
     }
     catch(err){
