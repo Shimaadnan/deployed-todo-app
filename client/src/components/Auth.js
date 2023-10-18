@@ -41,12 +41,21 @@ export default function Auth() {
       <div className='auth-container-box'>
         <form>
           <h2> {  isLogIn ? 'Please Log In' : 'Please Sign Up'}</h2>
-          <input type='email' placeholder='email'
-          onChange={(e)=>setEmail(e.target.value)}/>
-          <input type='password' placeholder='password'
-          onChange={(e)=>setPassword(e.target.value)}/>
-          {!isLogIn && <input type='password'placeholder='confirm password'
-          onChange={(e)=>setConfirmPassword(e.target.value)}/>}
+          <input 
+          type='email'
+          placeholder='email'
+          onChange={(e)=>setEmail(e.target.value)}
+          />
+          <input
+           type='password'
+          placeholder='password'
+          onChange={(e)=>setPassword(e.target.value)}
+          />
+          {!isLogIn && <input
+          type='password'
+          placeholder='confirm password'
+          onChange={(e)=>setConfirmPassword(e.target.value)}
+          />}
           <input type='submit' className='create' onClick={(e)=>handleSubmit(e,isLogIn ? 'login':'signup')}/>
           {error && <p>{error}</p>}
         </form> 

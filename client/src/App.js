@@ -25,7 +25,7 @@ const App=()=> {
     {
       getData()}
     },[])
-  console.log(typeof(tasks));
+    
    const soretdTasks=tasks?.sort((a,b)=> new Date(a.date)-new Date(b.date))
   return (
     <div className="app">
