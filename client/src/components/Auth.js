@@ -20,8 +20,7 @@ export default function Auth() {
         setError('MAke Sure password MAtch!')
         return
        }  
-       const response=await fetch(`${process.env.REACT_APP_SERVERURL}/
-       ${endpoint}`,{
+       const response=await fetch(`${process.env.REACT_APP_SERVERURL}/${endpoint}`,{
          method:'POST',
         headers:{'Content-type':'application/json'},
         body:JSON.stringify({email,password})
